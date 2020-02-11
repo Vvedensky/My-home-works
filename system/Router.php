@@ -47,7 +47,15 @@ class router
     public function run(){
         if($this->match()){
 
-            $controller = '\Controller\\'.ucfirst($this->params['controller']);
+            if(strpos($this->params['controller'], '/')){
+                $patch = explode('/', $this->params['controller']);
+                $patch[array_key_last($patch)] = ucfirst(end($patch));
+                $patch = implode($patch, '\\');
+            } else {
+                $patch = ucfirst($this->params['controller']);
+            }
+            
+            $controller = '\Controller\\'.$patch;
             $action = $this->params['action'];
 
             $controller_object = new $controller;

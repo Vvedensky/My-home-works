@@ -4,6 +4,7 @@ namespace Controller;
 class Page extends BaseController {
 
     public $modelPage;
+    public $data;
 
     public function index(){
         //Подключение модели
@@ -12,9 +13,11 @@ class Page extends BaseController {
 
 
         echo "Это контроллер Страниц!";
+
+        $this->data = "test";
+
+        $this->view('Page', $this->data);
     }
 
-    public function view(){
 
-    }
 }

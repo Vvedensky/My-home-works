@@ -72,6 +72,6 @@ trait Db{
      */
     public function query($query){
         $sth = $this->_connection->query($query);
-        return $sth->fetchObject();
+        //return $sth->fetchObject();
     }
 }
